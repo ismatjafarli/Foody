@@ -1,6 +1,7 @@
 package com.example.foody.ui.fragments.recipes
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,9 @@ import com.example.foody.adapters.RecipesAdapter
 import com.example.foody.databinding.FragmentRecipesBinding
 import com.example.foody.util.Constants.Companion.API_KEY
 import com.example.foody.util.NetworkResult
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RecipesFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
@@ -43,6 +46,7 @@ class RecipesFragment : Fragment() {
             when (response) {
                 is NetworkResult.Success -> {
                     hideShimmerEffect()
+//                    Log.d("TAG", "requestApiData: ${response.data}")
                     response.data?.let { mAdapter.setData(it) }
                 }
                 is NetworkResult.Error -> {
@@ -84,7 +88,7 @@ class RecipesFragment : Fragment() {
 
 
     private fun showShimmerEffect() {
-        binding.shimmerFrameLayout.showShimmer(true)
+        binding.shimmerFrameLayout.startShimmer()
         binding.shimmerFrameLayout.visibility = View.VISIBLE
         binding.recyclerview.visibility = View.GONE
 

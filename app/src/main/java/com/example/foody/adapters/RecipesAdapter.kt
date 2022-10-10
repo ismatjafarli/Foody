@@ -1,5 +1,6 @@
 package com.example.foody.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -42,10 +43,13 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
     }
 
     override fun getItemCount(): Int {
+        Log.d("TAG", "getItemCount: ${recipes.size}")
         return recipes.size
+
     }
 
     fun setData(newData: FoodRecipe) {
+//        Log.d("TAG", "setData: ${newData.results}")
         val recipesDiffUtil = RecipesDiffUtil(recipes, newData.results)
         val diffUtilResult = DiffUtil.calculateDiff(recipesDiffUtil)
         recipes = newData.results
