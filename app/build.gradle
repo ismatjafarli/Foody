@@ -1,7 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    // Navigation Component
     id 'androidx.navigation.safeargs'
+    // Hilt
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -34,6 +38,10 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -61,4 +69,19 @@ dependencies {
     // Gson
     implementation 'com.google.code.gson:gson:2.9.0'
 
+    // Retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+
+    // Image Loading library Coil
+    implementation "io.coil-kt:coil:2.1.0"
+
+}
+// Allow references to generated code (For Hilt)
+kapt {
+    correctErrorTypes true
 }
