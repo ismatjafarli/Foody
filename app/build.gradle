@@ -1,8 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+
     // Navigation Component
     id 'androidx.navigation.safeargs'
+
     // Hilt
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
@@ -77,14 +79,26 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
 
-    // Image Loading library Coil
+    // Coil-Image Loading library
     implementation "io.coil-kt:coil:2.1.0"
 
 //    // Coroutines
 //    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
 //    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
+    // Room components
+    implementation "androidx.room:room-runtime:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
+    implementation "androidx.room:room-ktx:2.4.3"
+    androidTestImplementation "androidx.room:room-testing:2.4.3"
+
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+
 }
+
+
 // Allow references to generated code (For Hilt)
 kapt {
     correctErrorTypes true
